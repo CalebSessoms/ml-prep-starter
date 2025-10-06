@@ -1,4 +1,4 @@
-\# 🎮 ML Prep Starter – Steam Reviews Analysis
+\# ML Prep Starter – Steam Reviews Analysis
 
 
 
