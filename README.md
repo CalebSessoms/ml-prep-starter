@@ -1,70 +1,8 @@
-# \# 🎮 ML Prep Starter – Steam Reviews Analysis
-
-# 
-
-# \## 🧰 1. Environment Setup
-
-# \- \*\*IDE:\*\* Visual Studio Code with GitHub Copilot (Agent Mode enabled)
-
-# \- \*\*Version Control:\*\* \[GitHub Repository](https://github.com/CalebSessoms/ml-prep-starter)
-
-# \- \*\*Python:\*\* 3.13 (virtual environment: `.venv`)
-
-# \- \*\*Key Packages:\*\* `transformers`, `torch`, `pandas`, `sqlite3`, `urllib`
-
-# \- \*\*Database:\*\* SQLite (`data/iris.db`)
-
-# 
-
-# ---
-
-# 
-
-# \## 💡 2. Project Overview
-
-# \*\*Topic:\*\* Player sentiment and behavior analysis for \*Stardew Valley\* (Steam AppID \*\*413150\*\*).  
-
-# 
-
-# This project demonstrates:
-
-# \- AI-assisted development (GitHub Copilot)
-
-# \- Data retrieval from real-world APIs
-
-# \- Database schema design and ingestion
-
-# \- Exploratory data analysis (EDA)
-
-# \- Basic text analytics on player sentiment
-
-# 
-
-# ---
-
-# 
-
-# \## 🔗 3. Data Source
-
-# Data was pulled directly from the \*\*Steam Reviews API\*\*:
-
-https://store.steampowered.com/appreviews/413150?json=1\&num\_per\_page=100
+\# 🎮 ML Prep Starter – Steam Reviews Analysis
 
 
 
-
-
-Each entry includes fields such as:
-
-\- `review` (text)
-
-\- `voted\_up` (positive/negative)
-
-\- `playtime\_forever`
-
-\- `num\_games\_owned`
-
-\- `timestamp\_created`
+An introductory ML project analyzing real \*\*Steam player reviews\*\* for \*Stardew Valley\* (AppID \*\*413150\*\*) using Python, SQLite, and AI-assisted development. Repo: https://github.com/CalebSessoms/ml-prep-starter
 
 
 
@@ -72,29 +10,15 @@ Each entry includes fields such as:
 
 
 
-\## 🧱 4. Database Schema
+\## Environment
 
+\- \*\*IDE:\*\* VS Code + GitHub Copilot
 
+\- \*\*Python:\*\* 3.13 (virtual env `.venv`)
 
-| Column | Type | Description |
+\- \*\*DB:\*\* SQLite (`data/iris.db`)
 
-|---------|------|-------------|
-
-| `id` | INTEGER | Auto-incremented primary key |
-
-| `recommendationid` | TEXT | Unique Steam review ID |
-
-| `review\_text` | TEXT | Player’s review |
-
-| `voted\_up` | INTEGER | 1 = Positive, 0 = Negative |
-
-| `playtime` | INTEGER | Total minutes played |
-
-| `num\_games\_owned` | INTEGER | Number of games owned by reviewer |
-
-| `timestamp` | INTEGER | Unix timestamp |
-
-| `language` | TEXT | Review language |
+\- \*\*Key libs:\*\* `transformers`, `torch`, `pandas`
 
 
 
@@ -102,107 +26,21 @@ Each entry includes fields such as:
 
 
 
-\## 📊 5. Statistical Analysis Results
-
-
-
-| Metric | Positive | Negative |
-
-|---------|-----------|-----------|
-
-| \*\*% of Reviews\*\* | 99.3% | 0.7% |
-
-| \*\*Average Playtime (minutes)\*\* | 8743.9 | 489.0 |
-
-| \*\*Average Games Owned\*\* | 40.6 | 43.0 |
-
-
-
-\*\*Interpretation:\*\*
-
-\- Stardew Valley enjoys \*overwhelmingly positive\* sentiment.
-
-\- Positive reviewers have significantly higher playtimes.
-
-\- Negative reviewers tend to quit early.
-
-
-
----
-
-
-
-\## ✏️ 6. Text Analysis Results
-
-
-
-\*\*Most Common Positive Words:\*\*
-
-`good`, `fun`, `love`, `cozy`, `best`, `farming`, `life`, `ever`, `valley`
-
-
-
-\*\*Most Common Negative Words:\*\*
-
-`boring`, `unplayable`, `bad`
-
-
-
-\*\*Interpretation:\*\*
-
-\- Positive reviews emphasize comfort and enjoyment.
-
-\- Negative reviews focus on core issues like boredom or bugs.
-
-
-
----
-
-
-
-\## 🧠 7. Tools \& Process
-
-1\. \*\*Fetch Reviews:\*\* Used Steam API and saved JSON locally (`data/steam\_413150\_reviews.json`).
-
-2\. \*\*Ingest Data:\*\* Parsed and stored reviews in SQLite (`steam\_reviews` table).
-
-3\. \*\*Statistical Analysis:\*\* Queried with SQL + `pandas`.
-
-4\. \*\*Text Analysis:\*\* Tokenized words and compared frequency by sentiment.
-
-
-
----
-
-
-
-\## 🔮 8. Future Enhancements
-
-\- Pull more review pages for larger samples.
-
-\- Track sentiment over time (by `timestamp`).
-
-\- Visualize results with `matplotlib` or `seaborn`.
-
-\- Compare player `voted\_up` with AI-predicted sentiment (using Hugging Face).
-
-
-
----
-
-
-
-\## 📘 9. Reflection
+\## Project Overview
 
 This project demonstrates:
 
-\- Competency with AI-assisted development tools.
+\- Real-world data retrieval from the \*\*Steam Reviews API\*\* (JSON).
 
-\- Practical data pipeline creation.
+\- Data cleaning + ingestion into SQLite (`steam\_reviews` table).
 
-\- Integration of \*\*real-world data\*\* with analytics.
+\- Statistical analysis (sentiment split, averages).
 
-\- Insight generation relevant to \*\*game development and player engagement\*\*.
+\- Lightweight text analysis (top words by sentiment).
+
+
+
+\*\*Data source:\*\* Steam Reviews API for Stardew Valley — `https://store.steampowered.com/appreviews/413150?json=1\&num\_per\_page=100`
 
 
 
@@ -210,7 +48,109 @@ This project demonstrates:
 
 
 
-© 2025 Caleb Sessoms
+\## Database Schema (`steam\_reviews`)
+
+| column | type | notes |
+
+|---|---|---|
+
+| id | INTEGER | auto-increment |
+
+| recommendationid | TEXT | unique per review |
+
+| review\_text | TEXT | raw user review |
+
+| voted\_up | INTEGER | 1=Positive, 0=Negative |
+
+| playtime | INTEGER | minutes played |
+
+| num\_games\_owned | INTEGER | reviewer’s library size |
+
+| timestamp | INTEGER | Unix epoch |
+
+| language | TEXT | filtered to English |
+
+
+
+---
+
+
+
+\## Results
+
+
+
+\### Statistical findings
+
+| Metric | Positive | Negative |
+
+|---|---:|---:|
+
+| % of reviews | \*\*99.3%\*\* | 0.7% |
+
+| Avg. playtime (min) | \*\*8743.9\*\* | 489.0 |
+
+| Avg. games owned | 40.6 | 43.0 |
+
+
+
+\*\*Insight:\*\* Reviews are overwhelmingly positive; positive reviewers play dramatically longer (strong engagement signal).
+
+
+
+\### Text findings
+
+\*\*Top positive words:\*\* `good`, `fun`, `love`, `cozy`, `best`, `farming`, `life`, `ever`, `valley`  
+
+\*\*Top negative words:\*\* `boring`, `unplayable`, `bad`
+
+
+
+\*\*Interpretation:\*\* Positive language emphasizes comfort/enjoyment (“cozy,” “love”), while negatives focus on core issues.
+
+
+
+---
+
+
+
+\## Process Summary
+
+1\. \*\*Fetch\*\*: Save raw JSON (`data/steam\_413150\_reviews.json`) via `scripts/fetch\_reviews.py`.  
+
+2\. \*\*Ingest\*\*: Parse → `steam\_reviews` table via `scripts/ingest\_reviews.py`.  
+
+3\. \*\*Analyze\*\*:  
+
+&nbsp;  - Stats: `scripts/analyze\_reviews\_stats.py`  
+
+&nbsp;  - Text: `scripts/analyze\_reviews\_text.py`
+
+
+
+---
+
+
+
+\## Future Work
+
+\- Pull more pages (bigger sample).  
+
+\- Trend analysis over time (`timestamp`).  
+
+\- Visualize with matplotlib/seaborn.  
+
+\- Compare `voted\_up` vs. model-predicted sentiment.
+
+
+
+---
+
+
+
+\## Reflection
+
+This project shows practical AI-assisted development and data analysis aligned with game-dev analytics: real API integration, clean ingestion, and meaningful insights about player behavior.
 
 
 
